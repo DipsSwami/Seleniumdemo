@@ -3,16 +3,11 @@ package com.selenium.framework.testcase;
 import com.selenium.framework.drivermanagement.DriverManager;
 import com.selenium.framework.pageobject.HotelList;
 import com.selenium.framework.pageobject.SearchHotel;
-import com.sun.rowset.internal.WebRowSetXmlWriter;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import java.security.PublicKey;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class HotelBooking {
 
@@ -39,11 +34,15 @@ public class HotelBooking {
 
     @Test(enabled = true)
     public void SelectHotel(){
-        HotelList hotelList = new HotelList(driver)
-                .selectFeaturedTab()
-                .getHotelTitle()
-                /*.selectHotelName()
-                .bookNow()*/;
+        try {
+            HotelList hotelList = new HotelList(driver)
+                    .selectFeaturedTab()
+                    .getHotelTitle()
+                    .selectHotelName()
+                    .bookNow();
+        }
+        catch(Exception ex) {
+        }
     }
 
 
